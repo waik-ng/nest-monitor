@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Nest Monitor</title>
+<style>
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+         max-width: 680px; margin: 48px auto; padding: 0 20px;
+         line-height: 1.6; color: #1a1a1a; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 20px; margin-top: 32px; }
+  a { color: #1a73e8; }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #ddd;
+           color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+<h1>Privacy Policy — Nest Monitor</h1>
+<p><strong>Effective date:</strong> November 8, 2026<br>
+<strong>App:</strong> Nest Monitor — a personal, single-user tool for
+monitoring one Google Nest thermostat.</p>
+
+<h2>What data is collected</h2>
+<p>Nest Monitor accesses the following data about the owner's own Nest
+thermostat, through Google's Smart Device Management (SDM) API, only
+after the owner grants access with their own Google account:</p>
+<ul>
+  <li>Room (ambient) temperature and heating / cooling setpoints</li>
+  <li>Thermostat mode and HVAC status (Heating, Cooling, or Off)</li>
+  <li>Humidity and connectivity status</li>
+</ul>
+<p>It also uses the owner's Gmail address to send alert emails to the
+owner, via Gmail SMTP.</p>
+<p>No other personal data is collected. The app has no other users, no
+accounts, no analytics, no advertising, and no tracking.</p>
+
+<h2>How data is used</h2>
+<p>The thermostat data is used only to log the thermostat's status, detect
+likely HVAC faults (such as short cycling, rapid cycling, or a long run
+with no progress toward the setpoint), and email an alert to the owner
+when a fault is detected. The app only reads thermostat status; it never
+changes the thermostat's settings.</p>
+
+<h2>Where data is stored</h2>
+<p>Readings are stored locally on the owner's Raspberry Pi in a SQLite
+database (<code>nest_data.db</code>). They are not uploaded to any server
+operated by the app, and they are not shared with any third party except
+Google, whose SDM and Gmail APIs are required for the app to function.</p>
+
+<h2>Data sharing</h2>
+<p>Data is not sold, rented, or shared with any third party for any
+purpose. The app's use and transfer of information received from Google
+APIs adheres to the
+<a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+including the Limited Use requirements.</p>
+
+<h2>Data retention and deletion</h2>
+<p>Readings are kept locally on the owner's Raspberry Pi until the owner
+deletes them. The owner can delete all stored readings at any time by
+deleting the <code>nest_data.db</code> file, and can revoke the app's
+access to their Google account at any time at
+<a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
+Revoking access stops all future data collection.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy can be sent to the app owner at the support
+email listed on the app's Google Cloud OAuth consent screen.</p>
+
+<footer>
+  <a href="index.html">← Back to Nest Monitor home</a>
+</footer>
+</body>
+</html>

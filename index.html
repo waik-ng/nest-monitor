@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nest Monitor — Personal Nest Thermostat Monitor</title>
+<style>
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+         max-width: 680px; margin: 48px auto; padding: 0 20px;
+         line-height: 1.6; color: #1a1a1a; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  p.sub { color: #555; margin-top: 0; }
+  h2 { font-size: 20px; margin-top: 32px; }
+  ul { padding-left: 20px; }
+  a { color: #1a73e8; }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #ddd;
+           color: #555; font-size: 14px; }
+  code { background: #f1f3f4; padding: 2px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>Nest Monitor</h1>
+<p class="sub">A personal, single-user tool that monitors one Google Nest thermostat
+for likely HVAC faults — including short cycling — and sends a Gmail alert
+when one is found.</p>
+
+<h2>What it does</h2>
+<p>Nest Monitor runs on a Raspberry Pi 4 on a cron schedule (every 2 minutes).
+On each poll it reads the thermostat's current status through Google's
+official Smart Device Management (SDM) API and logs it locally:</p>
+<ul>
+  <li>Room temperature and heating / cooling setpoint</li>
+  <li>Thermostat mode (Heat, Cool, Heat/Cool, Off) and HVAC status
+      (Heating, Cooling, Off)</li>
+  <li>Humidity and connectivity status</li>
+</ul>
+<p>From those readings it reconstructs heating and cooling cycles and looks
+for patterns that suggest a problem:</p>
+<ul>
+  <li><strong>Short cycling</strong> — a completed heat or cool run of
+      10 minutes or less</li>
+  <li><strong>Rapid cycling</strong> — 4 or more cycles started in one hour</li>
+  <li><strong>Long run with no progress</strong> — running for 90 minutes
+      or more without moving meaningfully toward the setpoint</li>
+  <li><strong>Thermostat unreachable</strong> — repeated failed API polls,
+      or the thermostat reporting itself offline</li>
+</ul>
+<p>When a fault is found, it sends an email alert via Gmail to the owner.
+It only reads thermostat status — it never changes the thermostat's
+settings.</p>
+
+<h2>Who uses it</h2>
+<p>This app is for personal use only, by its owner, on their own Nest
+thermostat and their own Raspberry Pi. It is not offered to the public,
+has no other users, collects no data from anyone else, and shows no
+advertising.</p>
+
+<h2>Data</h2>
+<p>Thermostat readings are stored locally on the owner's Raspberry Pi in a
+SQLite database, and alert emails are sent to the owner's own Gmail
+address. No data is sold or shared with any third party except Google,
+whose SDM and Gmail APIs are required for the app to function. See the
+<a href="privacy.html">Privacy Policy</a> for details.</p>
+
+<footer>
+  <a href="privacy.html">Privacy Policy</a> ·
+  Nest Monitor — personal use only
+</footer>
+</body>
+</html>
